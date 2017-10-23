@@ -5,7 +5,7 @@ import RxCocoa
 
 //: 2.6 merge プリミティブ：ストリームをマージする
 
-class ViewController_2_6 : UIViewController {
+class ViewController : UIViewController {
 
     let disposeBag = DisposeBag()
 
@@ -62,6 +62,4 @@ class ViewController_2_6 : UIViewController {
     }
 }
 
-// Present the view controller in the Live View window
-PlaygroundPage.current.liveView = ViewController_2_6()
-
+PlaygroundPage.current.liveView = ViewController()
