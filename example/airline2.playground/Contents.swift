@@ -3,11 +3,36 @@ import PlaygroundSupport
 import RxSwift
 import RxCocoa
 
-//: リスト 1-2 FRP を使った航空券予約サンプル（airline1.java）
+//: リスト 1-5 ビジネスルールのカプセル化（airline2.java）
+
+class Rule {
+    let f: (Date, Date) -> Bool
+
+    init(f: @escaping (Date, Date) -> Bool) {
+        self.f = f
+    }
+
+    func reify(dep: Observable<Date>, ret: Observable<Date>) -> Observable<Bool> {
+        return Observable.combineLatest(dep, ret) { d, r in self.f(d, r) }
+    }
+
+    func and(other: Rule) -> Rule {
+        return Rule { d, r -> Bool in self.f(d, r) && other.f(d, r) }
+    }
+}
+
+//: リスト 1-6 抽象的なビジネスルールの操作 (airline2.java)
 
 class ViewController : UIViewController {
 
     let disposeBag = DisposeBag()
+
+    private static func unlucky(dt: Date) -> Bool {
+        let calender = Calendar(identifier: .gregorian)
+        let components = calender.dateComponents([Calendar.Component.day], from: dt)
+        let day = components.day
+        return day == 4 || day == 14 || day == 24
+    }
 
     override func loadView() {
 
@@ -98,12 +123,14 @@ class ViewController : UIViewController {
             .bind(to: retTextField.rx.text)
             .disposed(by: disposeBag)
 
+        // 復路の日付が往路の日付よりも前になることはあり得ない
+        let r1 = Rule { d, r -> Bool in  d <= r }
 
-        let valid = Observable.combineLatest(dep, ret) { d, r -> Bool in
-            return d <= r
-        }
-        .startWith(false)
+        // 不吉な日には旅行できない
+        let r2 = Rule { d, r -> Bool in !ViewController.unlucky(dt: d) && !ViewController.unlucky(dt: r) }
 
+        let r = r1.and(other: r2)
+        let valid = r.reify(dep: dep, ret: ret).startWith(false)
         valid.bind(to: ok.rx.isEnabled)
             .disposed(by: disposeBag)
     }
@@ -116,3 +143,4 @@ window.makeKeyAndVisible()
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 PlaygroundPage.current.liveView = window
+
