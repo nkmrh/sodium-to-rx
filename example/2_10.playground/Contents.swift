@@ -3,7 +3,7 @@ import PlaygroundSupport
 import RxSwift
 import RxCocoa
 
-//: 2.9 hold と snapshot のループを使ってアキュムレーターを作成する
+//: 2.10 filter プリミティブ：イベントを随時伝搬させる
 
 class ViewController : UIViewController {
 
@@ -61,10 +61,11 @@ class ViewController : UIViewController {
         let sPlusDelta = plus.rx.tap.map { _ in 1 }
         let sMinusDelta = minus.rx.tap.map { _ in -1 }
         let sDelta = Observable.of(sPlusDelta, sMinusDelta).merge()
-        let sUpdate = sDelta.withLatestFrom(value) { d, v in d + v }
+        let sUpdate = sDelta.withLatestFrom(value) { d, v in d + v }.filter { $0 >= 0 }
 
         sUpdate.bind(to: value)
     }
 }
 
 PlaygroundPage.current.liveView = ViewController()
+
