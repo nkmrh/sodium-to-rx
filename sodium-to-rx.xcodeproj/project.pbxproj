@@ -32,6 +32,7 @@
 		649713F31F9ED40B00312C84 /* airline1.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = airline1.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		649713F41FA01AE400312C84 /* airline2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = airline2.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		64B0F2971FAFED9100EEED66 /* 2_11.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2_11.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		64D5FABF1FBBCA6E007B8A36 /* 6_6.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 6_6.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		64D752A892A98E5B0BBAC803 /* Pods-sodium-to-rx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sodium-to-rx.release.xcconfig"; path = "Pods/Target Support Files/Pods-sodium-to-rx/Pods-sodium-to-rx.release.xcconfig"; sourceTree = "<group>"; };
 		92C5BEB82C89EC9FB0C8DC99 /* Pods_sodium_to_rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sodium_to_rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -57,6 +58,7 @@
 				648449361FA31BD50081D4F1 /* 2_9.playground */,
 				646786141FAFE2DB00D9E2B8 /* 2_10.playground */,
 				64B0F2971FAFED9100EEED66 /* 2_11.playground */,
+				64D5FABF1FBBCA6E007B8A36 /* 6_6.playground */,
 				649713F31F9ED40B00312C84 /* airline1.playground */,
 				649713F41FA01AE400312C84 /* airline2.playground */,
 			);
