@@ -59,12 +59,13 @@ class ViewController : UIViewController {
             cell.textLabel?.text = element
         }
         .disposed(by: disposeBag)
+    }
 
-        tableView.rx.modelSelected(String.self)
-            .subscribe(onNext: { suggestion in
-                textField.text = suggestion
-            })
-            .disposed(by: disposeBag)
+    func currentTextOf(textField: UITextField) -> BehaviorSubject<String?> {
+        let sKeyPresses = textField.rx.controlEvent(.valueChanged)
+        let text = BehaviorSubject<String?>(value: textField.text)
+        sKeyPresses.map { _ in textField.text }.subscribe(text)
+        return text
     }
 
     func lookup(urlString: String, keyword: Observable<String>) -> Observable<[String]> {
@@ -89,13 +90,19 @@ class ViewController : UIViewController {
         }
     }
 
-    func autocomplete(textEdit: String) {
-
+    func autocomplete(textEdit: UITextField, tableView: UITableView) {
+        let editText = currentTextOf(textField: textEdit)
+        let sKeyPresses = textEdit.rx.controlEvent(.valueChanged)
+        let sDebounced = sKeyPresses.startWith(()).debounce(100, scheduler: MainScheduler.instance)
+        let sTextUpdate = sDebounced.withLatestFrom(editText) { _, text in text }.distinctUntilChanged { $0 != $1 }
+        let sEnterKey = textEdit.rx.controlEvent([.editingDidEndOnExit])
+        let sClicked = tableView.rx.modelSelected(String.self)
+        
     }
 }
 
 let viewController = ViewController()
-let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 640, height: 1600))
+let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 740, height: 1600))
 window.rootViewController = viewController
 window.makeKeyAndVisible()
 
