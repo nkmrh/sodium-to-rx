@@ -20,6 +20,7 @@
 		6439B30D1F9D806F00C3D0BB /* 2_6.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2_6.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6439B30E1F9D806F00C3D0BB /* 2_7.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2_7.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6439B30F1F9D806F00C3D0BB /* 2_8.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2_8.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		643F3EC2201FFF2A0087B5F8 /* simple.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = simple.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		644854171F99B1DC00AAACB0 /* sodium-to-rx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sodium-to-rx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6448541A1F99B1DC00AAACB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6448541C1F99B1DC00AAACB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 				64D5FABF1FBBCA6E007B8A36 /* 6_6.playground */,
 				649713F31F9ED40B00312C84 /* airline1.playground */,
 				649713F41FA01AE400312C84 /* airline2.playground */,
+				643F3EC2201FFF2A0087B5F8 /* simple.playground */,
 			);
 			path = example;
 			sourceTree = "<group>";
